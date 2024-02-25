@@ -10,15 +10,18 @@
   </div>
 </template>
 
-<script>
-import Cell from "../components/Cell.vue";
-import TileView from "../components/TileView.vue";
-import GameEndOverlay from "../components/GameEndOverlay.vue";
-import { Board } from "../board.js";
-import { onMounted, onBeforeUnmount, ref, computed } from "vue";
+<script lang="ts">
+import Cell from "@/components/Cell.vue";
+import TileView from "@/components/TileView.vue";
+import GameEndOverlay from "@/components/GameEndOverlay.vue";
+import {Board} from "@/board";
+import {onMounted, onBeforeUnmount, ref, computed} from "vue";
+
 export default {
   setup() {
+    // @ts-ignore
     const board = ref(new Board());
+    // @ts-ignore
     const handleKeyDown = (event) => {
       if (board.value.hasWon()) {
         return;
@@ -30,6 +33,7 @@ export default {
       }
     };
     const onRestart = () => {
+      // @ts-ignore
       board.value = new Board();
     };
     onMounted(() => {
@@ -39,6 +43,7 @@ export default {
       window.removeEventListener("keydown", handleKeyDown);
     });
     const tiles = computed(() => {
+      // @ts-ignore
       return board.value.tiles.filter((tile) => tile.value !== 0);
     });
     return {

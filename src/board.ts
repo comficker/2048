@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* tslint:disable */
 var rotateLeft = function (matrix) {
   var rows = matrix.length;
   var columns = matrix[0].length;
